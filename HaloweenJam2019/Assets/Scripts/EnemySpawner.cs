@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     public bool isSpawning;
     public bool hasSpawned;
     public bool isClose;
+    public bool lightOn;
 
     [Header("Serialized Stuff")]
     [SerializeField] private float playerDistance;
@@ -52,6 +53,10 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnRate = (playerDistance * spawnInterval) / (2 * initializeRateDis.y) + (spawnInterval / 2);
     }
+    public void lightUpdate()
+    {
+        lightOn = !lightOn;
+    }
 
     void Start()
     {
@@ -65,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
     }
     void Update()
     {
-        if(isSpawning && enemyCounter.maxZombie > enemyCounter.zombieCount)
+        if(isSpawning && enemyCounter.maxZombie > enemyCounter.zombieCount && !lightOn)
         {
             StartCoroutine("Spawning");
         }
