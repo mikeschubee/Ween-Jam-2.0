@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 0
-  bulletSpeed: 50
+  bulletSpeed: 40
 --- !u!33 &4616843951001715187
 MeshFilter:
   m_ObjectHideFlags: 0

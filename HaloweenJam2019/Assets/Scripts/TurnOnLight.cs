@@ -65,12 +65,4 @@ public class TurnOnLight : MonoBehaviour
         yield return new WaitForSeconds(120);
         LightReset = true;
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Destroy(other.gameObject);
-        }
-    }
 }
