@@ -14,6 +14,7 @@ public class EnemyFollowing : MonoBehaviour
     [Header("Gore")]
     public GameObject Gore;
     public GameObject[] GoreSpawns;
+    public GameObject GoreCenterSpawn;
     [Header("Status Bools")]
     private bool inRange;
     public bool isDead;
@@ -65,8 +66,8 @@ public class EnemyFollowing : MonoBehaviour
     {
         foreach(GameObject spawner in GoreSpawns)
         {
-            GameObject flesh = Instantiate(Gore, transform.position, Quaternion.identity);
-            flesh.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-500, 500), Random.Range(-500, 500), Random.Range(-500, 500)));
+            GameObject flesh = Instantiate(Gore, GoreCenterSpawn.transform.position, GoreCenterSpawn.transform.rotation);
+            flesh.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-300, 300), Random.Range(-500, 500), Random.Range(-300, 300)));
             flesh.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-500, 500), Random.Range(-500, 500), Random.Range(-500, 500)));
             float scale = Random.Range(0.5f, 1f);
             flesh.transform.localScale = new Vector3(scale, scale ,scale);
