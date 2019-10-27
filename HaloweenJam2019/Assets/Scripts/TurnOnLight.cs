@@ -65,4 +65,16 @@ public class TurnOnLight : MonoBehaviour
         yield return new WaitForSeconds(120);
         LightReset = true;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
+            if (health != null)
+            {
+                health.Damage(999);
+            }
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(float damageAmount)
     {
-        currentHealth --;
+        currentHealth -= damageAmount;
         if(currentHealth <= 0 && !GetComponent<EnemyFollowing>().isDead)
         {
             GetComponent<EnemyFollowing>().SpawnGore();
@@ -28,14 +28,6 @@ public class EnemyHealth : MonoBehaviour
             }
             enemyCounter.zombieCount -= 1;
             Destroy(gameObject);
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Light")
-        {
-            currentHealth -= 100;
         }
     }
 }
