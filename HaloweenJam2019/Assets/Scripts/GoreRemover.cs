@@ -13,8 +13,4 @@ public class GoreRemover : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        GetComponent<AudioSource>().Play();
-    }
 }
