@@ -723,7 +723,7 @@ MonoBehaviour:
   - {fileID: 2530779734251156390}
   - {fileID: 8212861551865975551}
   isDead: 0
-  damage: 1
+  damage: 2
   attacking: 0
   attackObject: {fileID: 804782220}
   hitSomething: 0
