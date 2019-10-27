@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float currentHealth = 2;
     float totalHealth;
+    public GameObject soundSource;
 
     private void Start()
     {
@@ -20,7 +21,10 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<EnemyFollowing>().SpawnGore();
             GetComponent<EnemyFollowing>().SpawnGore();
             GetComponent<EnemyFollowing>().isDead = true;
-            //GetComponent<AudioSource>().Play();
+            if (soundSource)
+            {
+                Instantiate(soundSource);
+            }
             Destroy(gameObject);
         }
     }
