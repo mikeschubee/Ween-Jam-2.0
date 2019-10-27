@@ -12,13 +12,13 @@ public class PlayerDeathUI : MonoBehaviour
     void Start()
     {
         canvas.enabled = false;
-        eventSystem = GameObject.FindGameObjectWithTag("EventSystem");
+        //eventSystem = GameObject.FindGameObjectWithTag("EventSystem");
     }
 
     private void Update()
     {
-        PlayerScore isScoring = eventSystem.GetComponent<PlayerScore>();
-        if (isScoring == false)
+        PlayerScore isScoring = GetComponent<PlayerScore>();
+        if (isScoring.isScoring == false)
         {
             canvas.enabled = true;
         }

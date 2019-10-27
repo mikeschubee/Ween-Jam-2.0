@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth = 10;
     public Image healthBar;
     float totalHealth;
-    bool isAlive = true;
+    public bool isAlive = true;
 
     private void Start()
     {

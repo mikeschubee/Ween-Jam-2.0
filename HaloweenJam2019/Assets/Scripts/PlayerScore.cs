@@ -13,16 +13,19 @@ public class PlayerScore : MonoBehaviour
 
     private void Start()
     {
+        isScoring = true;
         StartCoroutine("Score");
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
         PlayerHealth isAlive = player.GetComponent<PlayerHealth>();
-        if (isAlive == false)
+        if (isAlive.isAlive == false)
         {
             isScoring = false;
+            Cursor.lockState = CursorLockMode.None;
+            player.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<GunUse>().enabled = false;
         }
 
         if (isScoring == false)
