@@ -81,9 +81,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 5636737274047313498}
-  score: 0
-  pointIncrease: 1
+  score: 1
   isScoring: 0
+  player: {fileID: 0}
 --- !u!114 &5636737273587375878
 MonoBehaviour:
   m_ObjectHideFlags: 0
