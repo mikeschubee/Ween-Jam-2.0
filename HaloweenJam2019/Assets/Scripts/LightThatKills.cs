@@ -6,7 +6,7 @@ public class LightThatKills : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        print("Light Triggered");
+        //print("Light Triggered");
         if (GetComponent<SphereCollider>().bounds.Contains(other.gameObject.transform.position))
         {
             if (other.gameObject.tag == "Enemy")
