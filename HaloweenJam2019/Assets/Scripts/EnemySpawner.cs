@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject player;
     public GameObject zombie;
+    public EnemyCounter enemyCounter;
 
     [Header("Size Constraints")]
     public Vector2 initializeRateDis;
@@ -64,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
     }
     void Update()
     {
-        if(isSpawning)
+        if(isSpawning && enemyCounter.maxZombie > enemyCounter.zombieCount)
         {
             StartCoroutine("Spawning");
         }
@@ -106,6 +107,9 @@ public class EnemySpawner : MonoBehaviour
                     }
                 }
             }
+            enemyCounter.zombieCount += 1;
+            test.GetComponent<EnemyHealth>().enemyCounter = enemyCounter;
+            test.GetComponent<EnemyFollowing>().target = player;
             test.transform.localScale *= Random.Range(.8f, 1.2f);
 
             yield return new WaitForSeconds(spawnRate);

@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth = 2;
     float totalHealth;
     public GameObject soundSource;
+    public EnemyCounter enemyCounter;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 Instantiate(soundSource);
             }
+            enemyCounter.zombieCount -= 1;
             Destroy(gameObject);
         }
     }

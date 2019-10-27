@@ -42,7 +42,7 @@ public class TurnOnLight : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && (InteractTrigger == true))
+        if (Input.GetKeyDown(KeyCode.E) && (InteractTrigger == true) && LightReset)
         {
             Light.SetActive(true);
             StartCoroutine(LightDuration());
@@ -52,12 +52,15 @@ public class TurnOnLight : MonoBehaviour
 
     IEnumerator LightDuration()
     {
+        LightReset = false;
+        InteractTrigger = false;
+        InteractText.enabled = false;
         PlayerHealth health = player.GetComponent<PlayerHealth>();
         health.currentHealth = 10;
+        health.UpdateUI();
         InteractTrigger = false;
         yield return new WaitForSeconds(60);
         Light.SetActive(false);
-        LightReset = false;
         InteractTrigger = false;
         yield return new WaitForSeconds(120);
         LightReset = true;

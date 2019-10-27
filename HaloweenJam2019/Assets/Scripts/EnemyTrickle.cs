@@ -7,6 +7,7 @@ public class EnemyTrickle : MonoBehaviour
     public Transform[] nodes;
     public GameObject player;
     public GameObject zombie;
+    public EnemyCounter enemyCounter;
 
     [Header("Size Constraints")]
     public Vector2 initializeRateDis;
@@ -52,7 +53,7 @@ public class EnemyTrickle : MonoBehaviour
     {
         for(int i = 0; i < nodes.Length; i += 1)
         {
-            if(isSpawning[i])
+            if(isSpawning[i] && enemyCounter.maxZombie > enemyCounter.zombieCount)
             {
                 StartCoroutine("Spawning", i);
             }
@@ -65,7 +66,11 @@ public class EnemyTrickle : MonoBehaviour
             hasSpawned[i] = true;
             yield return new WaitForSeconds(Random.Range(0, spawnRate));
 
-            Instantiate(zombie, nodes[i].position + new Vector3(Random.Range(-spawnDis.x, spawnDis.x), 0f, Random.Range(-spawnDis.y, spawnDis.y)), transform.rotation);
+            enemyCounter.zombieCount += 1;
+            GameObject test = Instantiate(zombie, nodes[i].position + new Vector3(Random.Range(-spawnDis.x, spawnDis.x), 0f, Random.Range(-spawnDis.y, spawnDis.y)), transform.rotation);
+
+            test.GetComponent<EnemyHealth>().enemyCounter = enemyCounter;
+            test.GetComponent<EnemyFollowing>().target = player;
 
             yield return new WaitForSeconds(spawnRate * (nodes.Length - 2));
             hasSpawned[i] = false;

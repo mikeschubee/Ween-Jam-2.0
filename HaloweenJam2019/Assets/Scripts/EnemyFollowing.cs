@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyFollowing : MonoBehaviour
 {
     [Header("Essentials")]
-    GameObject target;
+    public GameObject target;
     Vector3 destination;
     NavMeshAgent agent;
     Animator anim;
@@ -16,7 +16,7 @@ public class EnemyFollowing : MonoBehaviour
     public GameObject[] GoreSpawns;
     public GameObject GoreCenterSpawn;
     [Header("Status Bools")]
-    private bool inRange;
+    private bool inRange = true;
     public bool isDead;
     [Header("Damage Realted")]
     [SerializeField] private float damage;
@@ -28,6 +28,7 @@ public class EnemyFollowing : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        UpdateMoveAnimations();
         //GetComponent<AudioSource>().Play();
     }
 
@@ -84,7 +85,7 @@ public class EnemyFollowing : MonoBehaviour
         anim.SetTrigger("PlayerRange");
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
@@ -102,7 +103,7 @@ public class EnemyFollowing : MonoBehaviour
             inRange = false;
             agent.SetDestination(transform.position);
         }
-    }
+    }*/
 
     /*IEnumerator SwingAtAir()
     {

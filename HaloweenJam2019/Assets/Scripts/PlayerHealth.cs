@@ -15,7 +15,10 @@ public class PlayerHealth : MonoBehaviour
     {
         totalHealth = currentHealth;
     }
-
+    public void UpdateUI()
+    {
+        healthBar.fillAmount = (1 / totalHealth) * currentHealth;
+    }
     public void Hurt(float damageAmount)
     {
         if (isAlive)
@@ -29,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
                 isAlive = false;
                 GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             }
-            healthBar.fillAmount = (1 / totalHealth) * currentHealth;
+            UpdateUI();
         }
     }
 }
