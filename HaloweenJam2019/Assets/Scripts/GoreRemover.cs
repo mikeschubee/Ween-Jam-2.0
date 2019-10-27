@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoreRemover : MonoBehaviour
 {
+    
     void Start()
     {
         Invoke("KillMe", 5);
@@ -11,5 +12,9 @@ public class GoreRemover : MonoBehaviour
     void KillMe()
     {
         Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetComponent<AudioSource>().Play();
     }
 }
