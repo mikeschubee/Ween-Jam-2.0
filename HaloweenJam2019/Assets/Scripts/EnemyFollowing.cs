@@ -28,6 +28,7 @@ public class EnemyFollowing : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        //GetComponent<AudioSource>().Play();
     }
 
     void Update()
@@ -72,6 +73,10 @@ public class EnemyFollowing : MonoBehaviour
             float scale = Random.Range(0.5f, 1f);
             flesh.transform.localScale = new Vector3(scale, scale ,scale);
         }
+    }
+
+    private void OnDestroy()
+    {
     }
 
     void UpdateMoveAnimations()

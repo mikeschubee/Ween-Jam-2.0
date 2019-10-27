@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57731f88b4ad24c856a9d6e22aa662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   zombie: {fileID: 5031305551172503613, guid: 47681f3a2b9bd904094d79e9b78fa0cf, type: 3}
   initializeRateDis: {x: 15, y: 60}
   spawnDis: {x: 15, y: 15}

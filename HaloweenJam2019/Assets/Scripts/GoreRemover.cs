@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class GoreRemover : MonoBehaviour
 {
+    
     void Start()
     {
-        Invoke("KillMe", 5);
-    }
-    void KillMe()
-    {
-        Destroy(gameObject);
+        Destroy(gameObject, 5);
     }
 }

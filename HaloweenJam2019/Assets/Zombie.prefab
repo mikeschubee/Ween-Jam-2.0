@@ -631,7 +631,6 @@ GameObject:
   - component: {fileID: 947425460}
   - component: {fileID: 947425457}
   - component: {fileID: 947425458}
-  - component: {fileID: 947425459}
   - component: {fileID: 947425461}
   - component: {fileID: 1489454738}
   m_Layer: 0
@@ -724,7 +723,7 @@ MonoBehaviour:
   - {fileID: 8212861551865975551}
   GoreCenterSpawn: {fileID: 984676238117787790}
   isDead: 0
-  damage: 2
+  damage: 1
   attacking: 0
   attackObject: {fileID: 804782220}
   hitSomething: 0
@@ -750,21 +749,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &947425459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5031305551172503613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa49a021ad394e74bad8cc1dc5327285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 0
-  Attacking: 0
-  player: {fileID: 0}
 --- !u!114 &947425461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,6 +762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 5
+  soundSource: {fileID: 4197147840723118846, guid: 25fd1890a8d946e4e86e54d30cb6b8fc,
+    type: 3}
 --- !u!135 &1489454738
 SphereCollider:
   m_ObjectHideFlags: 0
