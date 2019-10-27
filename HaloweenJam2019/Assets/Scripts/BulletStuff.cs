@@ -13,16 +13,18 @@ public class BulletStuff : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            EnemyHealth health = collision.gameObject.GetComponent<EnemyHealth>();
-            if (health != null)
+            if (other.gameObject.GetComponent<CapsuleCollider>().bounds.Contains(transform.position))
             {
-                health.Damage(bulletDamage);
+                EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
+                if (health != null)
+                {
+                    health.Damage(bulletDamage);
+                }
             }
         }
-        Destroy(gameObject);
     }
 }
