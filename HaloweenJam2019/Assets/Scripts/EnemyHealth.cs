@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<EnemyFollowing>().SpawnGore();
             GetComponent<EnemyFollowing>().SpawnGore();
             GetComponent<EnemyFollowing>().isDead = true;
+            //GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
     }
