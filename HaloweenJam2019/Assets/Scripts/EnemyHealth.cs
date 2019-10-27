@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        print("I was hit for: " + damageAmount);
         if(currentHealth <= 0 && !GetComponent<EnemyFollowing>().isDead)
         {
             GetComponent<EnemyFollowing>().SpawnGore();
@@ -30,4 +31,13 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Light")
+        {
+            Damage(9999f);
+        }
+
+    }*/
 }

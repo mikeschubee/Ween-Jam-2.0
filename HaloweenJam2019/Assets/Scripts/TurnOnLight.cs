@@ -66,15 +66,5 @@ public class TurnOnLight : MonoBehaviour
         LightReset = true;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
-            if (health != null)
-            {
-                health.Damage(999);
-            }
-        }
-    }
+    
 }
