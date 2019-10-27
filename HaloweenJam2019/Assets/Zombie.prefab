@@ -704,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a72e122b49e4648a7ad1695077829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   Gore: {fileID: 1115677920720182571, guid: b8387c74ae470994ebe532b0efe78486, type: 3}
   GoreSpawns:
   - {fileID: 9071958079243837924}
@@ -741,7 +742,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 9999
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -764,6 +765,7 @@ MonoBehaviour:
   currentHealth: 5
   soundSource: {fileID: 4197147840723118846, guid: 25fd1890a8d946e4e86e54d30cb6b8fc,
     type: 3}
+  enemyCounter: {fileID: 0}
 --- !u!135 &1489454738
 SphereCollider:
   m_ObjectHideFlags: 0
