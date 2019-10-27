@@ -48,7 +48,7 @@ public class EnemyFollowing : MonoBehaviour
     public void Attack()
     {
         RaycastHit hit;
-        hitSomething = Physics.BoxCast(transform.position, transform.localScale, attackObject.forward, out hit);
+        hitSomething = Physics.BoxCast(transform.position, transform.localScale, attackObject.forward, out hit, Quaternion.identity, 1.7f);
         if (hitSomething)
         {
             if (hit.collider.tag == "Player")
