@@ -30,4 +30,12 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Light")
+        {
+            currentHealth -= 100;
+        }
+    }
 }
