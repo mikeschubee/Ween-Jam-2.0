@@ -6,25 +6,35 @@ using UnityEngine.UI;
 public class PlayerScore : MonoBehaviour
 {
     public Text scoreText;
-    public float score;
-    public float pointIncrease;
+    public int score;
     public bool isScoring;
+    public GameObject player;
+
 
     private void Start()
     {
-        isScoring = true;
+        StartCoroutine("Score");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        if (isScoring == true)
+        PlayerHealth isAlive = player.GetComponent<PlayerHealth>();
+        if (isAlive == false)
         {
-            score += pointIncrease * Time.deltaTime;
+            isScoring = false;
         }
 
         if (isScoring == false)
         {
+            StopCoroutine("Score");
             scoreText.text = "Time Survived:" + (int)score;
         }
+    }
+
+    IEnumerator Score()
+    {
+        score++;
+        yield return new WaitForSeconds(1);
     }
 }

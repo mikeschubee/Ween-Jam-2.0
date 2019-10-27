@@ -25,9 +25,9 @@ public class PlayerHealth : MonoBehaviour
             {
                 GameObject temp = Instantiate(new GameObject(), transform.position, transform.rotation);
                 transform.parent = temp.transform;
-                GetComponent<Animator>().SetTrigger("Death");
+                //GetComponent<Animator>().SetTrigger("Death");
                 isAlive = false;
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             }
             healthBar.fillAmount = (1 / totalHealth) * currentHealth;
         }

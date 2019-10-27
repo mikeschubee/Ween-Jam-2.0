@@ -26,7 +26,7 @@ public class PlayerDeathUI : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackButton()
