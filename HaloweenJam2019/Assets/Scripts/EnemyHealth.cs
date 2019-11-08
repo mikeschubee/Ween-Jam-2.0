@@ -20,12 +20,12 @@ public class EnemyHealth : MonoBehaviour
         print("I was hit for: " + damageAmount);
         if(currentHealth <= 0 && !GetComponent<EnemyFollowing>().isDead)
         {
-            GetComponent<EnemyFollowing>().SpawnGore();
-            GetComponent<EnemyFollowing>().SpawnGore();
+            //GetComponent<EnemyFollowing>().SpawnGore();
+            //GetComponent<EnemyFollowing>().SpawnGore();
             GetComponent<EnemyFollowing>().isDead = true;
             if (soundSource)
             {
-                Instantiate(soundSource);
+                Instantiate(soundSource, transform.position, Quaternion.identity);
             }
             enemyCounter.zombieCount -= 1;
             Destroy(gameObject);

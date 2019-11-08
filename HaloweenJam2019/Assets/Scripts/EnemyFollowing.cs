@@ -66,14 +66,15 @@ public class EnemyFollowing : MonoBehaviour
 
     public void SpawnGore()
     {
-        foreach(GameObject spawner in GoreSpawns)
+        /*foreach(GameObject spawner in GoreSpawns)
         {
             GameObject flesh = Instantiate(Gore, GoreCenterSpawn.transform.position, GoreCenterSpawn.transform.rotation);
             flesh.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-300, 300), Random.Range(-500, 500), Random.Range(-300, 300)));
             flesh.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-500, 500), Random.Range(-500, 500), Random.Range(-500, 500)));
             float scale = Random.Range(0.5f, 1f);
             flesh.transform.localScale = new Vector3(scale, scale ,scale);
-        }
+        }*/
+        //GameObject flesh = Instantiate(Gore, GoreCenterSpawn.transform.position, GoreCenterSpawn.transform.rotation);
     }
 
     private void OnDestroy()
