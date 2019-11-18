@@ -148,16 +148,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4197147840723118819}
     m_Modifications:
-    - target: {fileID: 1700309917437188759, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
-        type: 3}
-      propertyPath: m_Name
-      value: FleshExplosion
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700309917437188759, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1700309917437188752, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,6 +202,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700309917437188759, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
+        type: 3}
+      propertyPath: m_Name
+      value: FleshExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700309917437188753, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.2264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700309917437188753, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700309917437188753, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700309917437188753, guid: 3c3fa148ccc4c2943b54bcb90481ee5e,
+        type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c3fa148ccc4c2943b54bcb90481ee5e, type: 3}

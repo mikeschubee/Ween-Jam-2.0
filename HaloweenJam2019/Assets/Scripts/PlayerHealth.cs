@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         totalHealth = currentHealth;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void UpdateUI()
     {
@@ -30,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
                 transform.parent = temp.transform;
                 //GetComponent<Animator>().SetTrigger("Death");
                 isAlive = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             }
             UpdateUI();
