@@ -684,6 +684,7 @@ MonoBehaviour:
   SpawnRoomEntrancePoint: {fileID: 583597235}
   Spawnpoints: []
   player: {fileID: 0}
+  SpawnRoomTerminal: {fileID: 3179168136500688440}
   ActiveSceneNum: -1
 --- !u!4 &2147473258
 Transform:
@@ -1955,7 +1956,7 @@ MonoBehaviour:
   interactText: {fileID: 0}
   lvlManager: {fileID: 2147473257}
   SpawnRoomTerminal: 1
-  spawnPoint: {fileID: 8968360342748758024}
+  spawnPoint: {fileID: 0}
 --- !u!23 &3190920993156397589
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2092,20 +2093,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3028042972382396097}
   m_Mesh: {fileID: 5512361600001258384, guid: e8ed7ff7cbf59c44c8d77ff26391f1ac, type: 3}
---- !u!4 &3470755027578114777
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8968360342748758024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.2012, z: 0.0204}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4727658297799028268}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3591111570377352423
 Transform:
   m_ObjectHideFlags: 0
@@ -2704,8 +2691,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0.000000014901159, z: -0.000000024544377, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -1000.04, z: -6.7}
   m_LocalScale: {x: 25.137938, y: 25.13793, z: 59.89727}
-  m_Children:
-  - {fileID: 3470755027578114777}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
@@ -4387,22 +4373,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &8968360342748758024
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3470755027578114777}
-  m_Layer: 0
-  m_Name: Spawnpoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!23 &8983816608428367560
 MeshRenderer:
   m_ObjectHideFlags: 0

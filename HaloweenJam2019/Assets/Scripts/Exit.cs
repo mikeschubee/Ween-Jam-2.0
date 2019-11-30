@@ -59,22 +59,28 @@ public class Exit : MonoBehaviour
     {
         if (!SpawnRoomTerminal)
         {
+            print("SpawnPoint: Moving player to spawn room");
             activated = true;
+            print("Sent Player to SpawnRoom");
+            lvlManager.MovePlayerToSpawnRoom();
         }
         Debug.Log("I Have Been Pressed");
         if (SpawnRoomTerminal)
         {
             GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().LoadRandomScene();
+            isActive = false;
         }
-        lvlManager.MovePlayerToSpawnRoom(player);
+
+        inRange = false;
     }
 
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player")
         {
-            inRange = true;
+            
             player = other.gameObject;
+            inRange = true;
             if (isActive)
             {
                 interactText.enabled = true;

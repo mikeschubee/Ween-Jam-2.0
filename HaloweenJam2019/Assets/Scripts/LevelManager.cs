@@ -8,6 +8,9 @@ public class LevelManager : MonoBehaviour
     public GameObject SpawnRoomEntrancePoint;
     public List<GameObject> Spawnpoints;
     public GameObject player;
+    public Exit SpawnRoomTerminal;
+
+    private bool FullyLoaded;
 
     //This is to track whether or not you have to unload a scene when loading a new one
     public int ActiveSceneNum = -1;
@@ -15,7 +18,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        LoadRandomScene();
+        //LoadRandomScene();
     }
 
     public void LoadScene(int sceneIndex)
@@ -43,17 +46,21 @@ public class LevelManager : MonoBehaviour
         {
             UnloadScene(ActiveSceneNum);
         }
-        LoadScene(Mathf.CeilToInt(Random.Range(4, 5)));
+        LoadScene(Mathf.CeilToInt(Random.Range(4, 4)));
     }
 
-    public void MovePlayerToSpawnRoom(GameObject playerObject)
+    public void MovePlayerToSpawnRoom()
     {
-        player = playerObject;
+        player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = SpawnRoomEntrancePoint.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
+        SpawnRoomTerminal.isActive = true;
     }
     public void MovePlayerToMap()
     {
+        player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = Spawnpoints[Mathf.CeilToInt(Random.Range(0, Spawnpoints.Count))].transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
     IEnumerator LoadSceneAsync(int sceneIndex)
@@ -65,6 +72,7 @@ public class LevelManager : MonoBehaviour
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
         MovePlayerToMap();
+        //StartCoroutine(DelayedMapSpawn());
     }
 
     IEnumerator UnloadSceneAsync(int sceneIndex)
@@ -75,5 +83,12 @@ public class LevelManager : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    IEnumerator DelayedMapSpawn()
+    {
+        yield return new WaitForSeconds(1);
+        print("Delayed");
+        MovePlayerToMap();
     }
 }
