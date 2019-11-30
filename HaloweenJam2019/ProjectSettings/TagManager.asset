@@ -8,6 +8,8 @@ TagManager:
   - Light
   - Enemy
   - EventSystem
+  - LevelManager
+  - InteractText
   layers:
   - Default
   - TransparentFX

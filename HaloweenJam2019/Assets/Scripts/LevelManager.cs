@@ -5,28 +5,71 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public string[] sceneList;
-    
+    public GameObject SpawnRoomEntrancePoint;
+    public List<GameObject> Spawnpoints;
+    public GameObject player;
+
+    //This is to track whether or not you have to unload a scene when loading a new one
+    public int ActiveSceneNum = -1;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        LoadRandomScene();
+    }
+
     public void LoadScene(int sceneIndex)
     {
         StartCoroutine(LoadSceneAsync(sceneIndex));
+        if(ActiveSceneNum != -1)
+        {
+            UnloadScene(sceneIndex);
+        }
+        ActiveSceneNum = sceneIndex;
     }
     public void UnloadScene(int sceneIndex)
     {
+        foreach(GameObject point in Spawnpoints)
+        {
+            Destroy(point.transform.parent.gameObject);
+        }
+        Spawnpoints.Clear();
         StartCoroutine(UnloadSceneAsync(sceneIndex));
+    }  
+    public void LoadRandomScene()
+    {
+        //4 & 5 are the only options as of december 2019
+        if(ActiveSceneNum != -1)
+        {
+            UnloadScene(ActiveSceneNum);
+        }
+        LoadScene(Mathf.CeilToInt(Random.Range(4, 5)));
+    }
+
+    public void MovePlayerToSpawnRoom(GameObject playerObject)
+    {
+        player = playerObject;
+        player.transform.position = SpawnRoomEntrancePoint.transform.position;
+    }
+    public void MovePlayerToMap()
+    {
+        player.transform.position = Spawnpoints[Mathf.CeilToInt(Random.Range(0, Spawnpoints.Count))].transform.position;
     }
 
     IEnumerator LoadSceneAsync(int sceneIndex)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
         while (!operation.isDone)
         {
             yield return null;
         }
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
+        MovePlayerToMap();
     }
 
     IEnumerator UnloadSceneAsync(int sceneIndex)
     {
+        print("SceneIndex to be unloaded: " + sceneIndex);
         AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneIndex);
         while (!operation.isDone)
         {

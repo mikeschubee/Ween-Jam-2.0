@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
     [Header("Activity Bools")]
     [Tooltip("Wheather or not the player can interact with this terminal")]
-    public bool isActive;
+    public bool isActive = true;
     [Tooltip("If the player is in range for interaction")]
     public bool inRange;
     [Tooltip("If the terminal has been activated")]
@@ -17,14 +18,32 @@ public class Exit : MonoBehaviour
     [Header("UI Things")]
     [SerializeField] private Text interactText;
 
+    
     //Player refrence. Aquired by the player interacting with the terminal
     private GameObject player;
+    [Header("Useful Refernces/Other")]
+    [SerializeField]private LevelManager lvlManager;
+    [SerializeField] private bool SpawnRoomTerminal;
+    public GameObject spawnPoint;
 
+    private void Start()
+    {
+        interactText = GameObject.FindGameObjectWithTag("InteractText").GetComponent<Text>();
+        
+        if (!SpawnRoomTerminal)
+        {
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(1));
+        }
+        lvlManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        if (spawnPoint != null)
+        {
+            lvlManager.Spawnpoints.Add(spawnPoint);
+        }
+    }
     private void Update()
     {
-        if(isActive && !activated && inRange)
+        if(isActive && inRange)
         {
-            interactText.enabled = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Activate();
@@ -38,8 +57,16 @@ public class Exit : MonoBehaviour
 
     private void Activate()
     {
-        activated = true;
+        if (!SpawnRoomTerminal)
+        {
+            activated = true;
+        }
         Debug.Log("I Have Been Pressed");
+        if (SpawnRoomTerminal)
+        {
+            GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().LoadRandomScene();
+        }
+        lvlManager.MovePlayerToSpawnRoom(player);
     }
 
     private void OnTriggerStay(Collider other)
@@ -48,6 +75,10 @@ public class Exit : MonoBehaviour
         {
             inRange = true;
             player = other.gameObject;
+            if (isActive)
+            {
+                interactText.enabled = true;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -55,6 +86,7 @@ public class Exit : MonoBehaviour
         if(other.tag == "Player")
         {
             inRange = false;
+            interactText.enabled = false;
         }
     }
 }
