@@ -46,7 +46,8 @@ public class LevelManager : MonoBehaviour
         {
             UnloadScene(ActiveSceneNum);
         }
-        LoadScene(Mathf.CeilToInt(Random.Range(4, 4)));
+        LoadScene(Random.Range(0, 100) < 50? 4 : 5);
+        //LoadScene(5);
     }
 
     public void MovePlayerToSpawnRoom()
@@ -70,7 +71,7 @@ public class LevelManager : MonoBehaviour
         {
             yield return null;
         }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
         MovePlayerToMap();
         //StartCoroutine(DelayedMapSpawn());
     }
